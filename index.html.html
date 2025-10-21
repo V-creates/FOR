@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sai Sameer 💖</title>
+
+<!-- Cute Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Comic Neue', cursive;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(135deg, #c7eaff, #e0bbff);
+    transition: background 1.5s ease;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    color: #ff66b2;
+    font-size: 3.2em;
+    padding: 0 20px;
+    animation: fadeIn 1.2s ease forwards;
+    text-shadow: 0 0 10px #fff5, 0 0 20px #ffb6e6;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0; transform: scale(0.8);}
+    100% {opacity: 1; transform: scale(1);}
+  }
+
+  button {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #ffb6e6, #ffa6d1);
+    border: none;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 12px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.08);
+    background: linear-gradient(90deg, #ffa6d1, #ffb6e6);
+  }
+
+  .floating {
+    position: absolute;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% {transform: translateY(0) scale(1); opacity: 1;}
+    100% {transform: translateY(-900px) scale(1.4); opacity: 0;}
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 12px;
+    opacity: 0.8;
+    color: #fff;
+    text-shadow: 0 0 8px #fff, 0 0 12px #fff;
+    animation: sparkle 2s infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% {opacity: 0.2; transform: scale(1);}
+    50% {opacity: 1; transform: scale(1.4);}
+  }
+
+  /* Floating decorations around edges */
+  .corner {
+    position: absolute;
+    opacity: 0.3;
+    font-size: 4em;
+  }
+
+  .corner.tl {top: 10px; left: 20px;}
+  .corner.tr {top: 10px; right: 20px;}
+  .corner.bl {bottom: 10px; left: 20px;}
+  .corner.br {bottom: 10px; right: 20px;}
+</style>
+</head>
+
+<body>
+
+<!-- Corner emojis -->
+<div class="corner tl">🌸</div>
+<div class="corner tr">💫</div>
+<div class="corner bl">🦋</div>
+<div class="corner br">💖</div>
+
+<h1 id="message">Hello Sai Sameer! 💕</h1>
+<button id="nextBtn">Next ➜</button>
+
+<!-- Soft romantic background music (royalty-free gentle tune) -->
+<audio id="bgMusic" loop autoplay>
+  <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_4ce6b2b51e.mp3?filename=romantic-piano-112194.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const messages = [
+  "Hello Sai Sameer! 💕",
+  "You make my world brighter than sunshine ☀️",
+  "Every heartbeat whispers your name 💓",
+  "You’re my sweetest daydream 🍭",
+  "Your smile makes clouds disappear 🌸",
+  "You are my favorite place to be 🏡",
+  "Even the stars envy your sparkle ✨",
+  "Life feels magical with you 🌈",
+  "You give me butterflies every single day 🦋",
+  "You’re my forever person 💍",
+  "You warm my heart like cocoa on a rainy day ☕",
+  "Your voice is my favorite sound 🎵",
+  "Every glance from you feels like a hug 🤗",
+  "You’re the melody my soul dances to 🎶",
+  "You’re my happy thought when skies are grey ☁️",
+  "If kisses were stars, I'd send you galaxies 💫",
+  "You’re my favorite chapter in life’s story 📖",
+  "With you, every day feels like spring 🌷",
+  "You are my comfort, my chaos, my calm 💖",
+  "The world glows softer when you’re near 🌞",
+  "You are my heart’s favorite person ❤️",
+  "Even my dreams can’t compete with you 💭",
+  "You + Me = forever magic 🪄",
+  "You’re my peaceful sunset after every storm 🌅",
+  "You make my universe bloom 🌸🌙",
+  "Your love is my safe home 🏠💗",
+  "My favorite notification: your name 💌",
+  "You’re the art that colors my soul 🎨",
+  "Thank you for being my everything 💞",
+  "Forever yours — with all my heart 💘"
+];
+
+const gradients = [
+  "linear-gradient(135deg, #c7eaff, #e0bbff)",
+  "linear-gradient(135deg, #ffd6e8, #ffe0b2)",
+  "linear-gradient(135deg, #c6f7e2, #ffe6f7)",
+  "linear-gradient(135deg, #fff0b3, #f4bfff)",
+  "linear-gradient(135deg, #ffdfba, #bae1ff)",
+  "linear-gradient(135deg, #d0f0c0, #ffe6f7)",
+  "linear-gradient(135deg, #e0bbff, #ffb6e6)",
+  "linear-gradient(135deg, #ffc2e2, #b5f5ec)",
+  "linear-gradient(135deg, #ffccf9, #d5f0ff)",
+  "linear-gradient(135deg, #b8e1ff, #eeb8ff)",
+  "linear-gradient(135deg, #ffd1dc, #e0bbff)",
+  "linear-gradient(135deg, #c7eaff, #ffc2e2)",
+  "linear-gradient(135deg, #ffd6e8, #d0f0c0)",
+  "linear-gradient(135deg, #bde0fe, #ffc8dd)",
+  "linear-gradient(135deg, #fbc4ab, #ffb6b9)",
+  "linear-gradient(135deg, #e0c3fc, #8ec5fc)",
+  "linear-gradient(135deg, #fcd1d1, #ece2e1)",
+  "linear-gradient(135deg, #ffe6eb, #ffc2d1)",
+  "linear-gradient(135deg, #c8ffd4, #eaffd0)",
+  "linear-gradient(135deg, #fff0b3, #ffd6e8)",
+  "linear-gradient(135deg, #e0bbff, #bde0fe)",
+  "linear-gradient(135deg, #f6e3ff, #ffd6f6)",
+  "linear-gradient(135deg, #ffd1ff, #baf3f3)",
+  "linear-gradient(135deg, #e0c3fc, #ffcfd2)",
+  "linear-gradient(135deg, #caffbf, #9bf6ff)",
+  "linear-gradient(135deg, #a0c4ff, #bdb2ff)",
+  "linear-gradient(135deg, #ffafcc, #ffc8dd)",
+  "linear-gradient(135deg, #f1c0e8, #cfbaf0)",
+  "linear-gradient(135deg, #fde2e4, #fad2e1)",
+  "linear-gradient(135deg, #d0f0c0, #ffe6f7)"
+];
+
+let index = 0;
+const messageEl = document.getElementById("message");
+const nextBtn = document.getElementById("nextBtn");
+
+function createFloating(symbol, size, duration) {
+  const elem = document.createElement("div");
+  elem.classList.add("floating");
+  elem.textContent = symbol;
+  elem.style.fontSize = size + "px";
+  elem.style.left = Math.random() * 100 + "vw";
+  elem.style.bottom = "-50px";
+  elem.style.animationDuration = duration + "s";
+  document.body.appendChild(elem);
+  setTimeout(() => elem.remove(), duration * 1000);
+}
+
+setInterval(() => createFloating("💖", 22 + Math.random() * 10, 6 + Math.random() * 3), 500);
+setInterval(() => createFloating("🌸", 18 + Math.random() * 12, 7 + Math.random() * 4), 800);
+setInterval(() => createFloating("⭐", 14 + Math.random() * 10, 8 + Math.random() * 5), 900);
+
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
+  sparkle.textContent = "✦";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  sparkle.style.animationDuration = 2 + Math.random() * 2 + "s";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 400);
+
+nextBtn.addEventListener("click", () => {
+  index = (index + 1) % messages.length;
+  messageEl.textContent = messages[index];
+  document.body.style.background = gradients[index];
+  messageEl.style.animation = "fadeIn 1.2s ease forwards";
+  if (index === messages.length - 1) {
+    nextBtn.textContent = "💌 Restart 💌";
+  } else {
+    nextBtn.textContent = "Next ➜";
+  }
+});
+
+// Play music on first interaction (mobile autoplay fix)
+nextBtn.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.3;
+  music.play().catch(()=>{});
+});
+</script>
+
+</body>
+</html>
